@@ -1,2 +1,2 @@
 # Projects
-My DECI project
+My projects
