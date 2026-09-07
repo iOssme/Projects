@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>دليل المراكز الثقافية في القاهرة | Cairo Cultural Centers Guide</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Rakkas&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: {
+              50: '#FDFBF7',
+              100: '#F6F3EB',
+              200: '#EAE4D9',
+              300: '#D5C8B5',
+            },
+            slate: {
+              850: '#151e2e',
+            },
+            heritage: {
+              500: '#A47754',
+              600: '#8A5D3B',
+              700: '#6C4629',
+            }
+          },
+          fontFamily: {
+            sans: ['Rakkas', 'serif'], // Default to Rakkas for RTL
+            serif: ['Rakkas', 'serif'],
+            en: ['Lexend', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Base styling & transitions */
+    body {
+      background-color: #f8f5f2;
+      color: #2d2d2d;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    [dir="ltr"] body, [dir="ltr"] .font-dynamic, [dir="ltr"] .font-sans, [dir="ltr"] .font-serif {
+      font-family: 'Lexend', sans-serif !important;
+    }
+    [dir="rtl"] body, [dir="rtl"] .font-dynamic, [dir="rtl"] .font-sans, [dir="rtl"] .font-serif {
+      font-family: 'Rakkas', serif !important;
+    }
+
+    .glass-card {
+      background: #ffffff;
+      border: 1px solid #e5e1da;
+      border-radius: 24px;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+    .glass-card:hover {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transform: translateY(-2px);
+      border-color: #d1ccc0;
+    }
+    
+    .chip-active {
+      background-color: #b45309;
+      color: white;
+      border-color: #b45309;
+      font-weight: 700;
+    }
+    .chip-inactive {
+      background-color: white;
+      color: #1a1a1a;
+      border-color: #d1ccc0;
+      font-weight: 700;
+    }
+
+    .modal-overlay {
+      background: rgba(15, 23, 42, 0.4);
+      backdrop-filter: blur(4px);
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FDFBF7; 
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D5C8B5; 
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #A47754; 
+    }
+    
+    /* Fade Animation */
+    .fade-in {
+      animation: fadeIn 0.4s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col font-dynamic">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-[#f8f5f2]/90 backdrop-blur-md border-b border-[#e5e1da] shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div>
+          <h1 class="text-3xl font-serif font-bold text-[#1a1a1a]" id="t-header-title">دليل المراكز الثقافية</h1>
+          <p class="text-xl font-serif text-[#b45309] mt-1" id="t-header-subtitle">القاهرة، مصر</p>
+        </div>
+      </div>
+      
+      <button id="lang-toggle" class="flex items-center gap-2 px-4 py-2 bg-[#1a1a1a] text-white rounded-full text-xs font-semibold cursor-pointer transition-colors hover:bg-gray-800">
+        <i data-lucide="languages" class="w-4 h-4"></i>
+        <span id="lang-text">English</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+    
+    <!-- Hero / Search Section -->
+    <div class="mb-10 text-center max-w-3xl mx-auto fade-in">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-[#1a1a1a] mb-4 leading-tight" id="t-hero-title">
+        اكتشف نبض القاهرة الثقافي
+      </h2>
+      <p class="text-lg text-[#b45309] font-serif mb-8" id="t-hero-desc">
+        دليلك الشامل للمكتبات، المراكز الفنية، والمعاهد الثقافية في العاصمة.
+      </p>
+      
+      <div class="relative max-w-2xl mx-auto group">
+        <div class="absolute inset-y-0 start-0 pl-4 flex items-center pointer-events-none p-4 rtl:pr-4 rtl:pl-0">
+          <i data-lucide="search" class="w-5 h-5 text-gray-400 group-focus-within:text-[#b45309] transition-colors"></i>
+        </div>
+        <input 
+          type="text" 
+          id="search-input" 
+          class="block w-full bg-white border border-[#d1ccc0] rounded-full py-4 pl-12 pr-4 rtl:pr-12 rtl:pl-4 text-[#1a1a1a] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b45309] focus:border-transparent transition-all" 
+          placeholder="ابحث بالاسم، المنطقة، أو الكلمات الدالة..." 
+        />
+      </div>
+    </div>
+
+    <!-- Filters Section -->
+    <div class="mb-8 fade-in" style="animation-delay: 0.1s;">
+      
+      <!-- Area Filters -->
+      <div class="mb-6">
+        <div class="flex items-center gap-2 mb-3">
+          <i data-lucide="map-pin" class="w-4 h-4 text-gray-500"></i>
+          <h3 class="text-[10px] font-bold uppercase tracking-widest text-gray-500" id="t-filter-area">المنطقة</h3>
+        </div>
+        <div class="flex flex-wrap gap-2" id="area-filters">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Wi-Fi Filters -->
+      <div>
+        <div class="flex items-center gap-2 mb-3">
+          <i data-lucide="wifi" class="w-4 h-4 text-gray-500"></i>
+          <h3 class="text-[10px] font-bold uppercase tracking-widest text-gray-500" id="t-filter-wifi">خدمة الواي فاي</h3>
+        </div>
+        <div class="flex flex-wrap gap-2" id="wifi-filters">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+      
+    </div>
+
+    <!-- Results count & clear -->
+    <div class="flex justify-between items-center mb-6 fade-in" style="animation-delay: 0.2s;">
+      <p class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
+        <span id="results-count">20</span> <span id="t-results-text">مركز ثقافي</span>
+      </p>
+      <button id="clear-filters" class="hidden text-xs text-[#b45309] hover:text-[#92400e] font-bold flex items-center gap-1 border-b border-transparent hover:border-[#92400e]">
+        <i data-lucide="x" class="w-3 h-3"></i>
+        <span id="t-clear-filters">مسح التصفيات</span>
+      </button>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="cards-grid">
+      <!-- Populated by JS -->
+    </div>
+    
+    <!-- Empty State -->
+    <div id="empty-state" class="hidden text-center py-20 fade-in">
+      <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white border border-[#e5e1da] text-gray-400 mb-4 shadow-sm">
+        <i data-lucide="search-x" class="w-8 h-8"></i>
+      </div>
+      <h3 class="text-lg font-bold text-[#1a1a1a] mb-2" id="t-empty-title">لا توجد نتائج</h3>
+      <p class="text-gray-500 text-sm font-medium" id="t-empty-desc">حاول تغيير كلمات البحث أو مسح التصفيات.</p>
+    </div>
+
+  </main>
+
+  <!-- Details Modal -->
+  <div id="details-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="absolute inset-0 modal-overlay" id="modal-backdrop"></div>
+    <div class="relative bg-white w-full max-w-2xl rounded-[24px] border border-[#e5e1da] shadow-sm overflow-hidden flex flex-col max-h-[90vh] transform scale-95 transition-transform duration-300" id="modal-content-panel">
+      
+      <!-- Modal Header -->
+      <div class="relative h-24 bg-[#f8f5f2] border-b border-[#e5e1da] flex items-center justify-center overflow-hidden">
+        <button id="close-modal" class="absolute top-4 end-4 p-2 bg-white border border-[#d1ccc0] hover:border-[#1a1a1a] rounded-full text-[#1a1a1a] shadow-sm transition-colors z-10">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+        <div class="z-10 bg-white p-3 rounded-xl shadow-sm border border-[#e5e1da] mt-6">
+          <i data-lucide="landmark" class="w-6 h-6 text-[#b45309]"></i>
+        </div>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-6 sm:p-8 overflow-y-auto" id="modal-body">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <footer class="border-t border-[#e5e1da] bg-[#f8f5f2] py-6 mt-12 text-center">
+    <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">
+      <span id="t-footer">بني باستخدام</span> Google AI Studio
+    </p>
+  </footer>
+
+  <script>
+    /* =========================================
+       DATA: 20 Cairo Cultural Centers
+       ========================================= */
+    const rawData = [
+      {
+        id: 1,
+        nameAr: "المعهد الفرنسي في مصر",
+        nameEn: "Institut français d'Egypte",
+        addressAr: "1 شارع شفيق الديب - المنيرة - السيدة زينب",
+        addressEn: "1 Shafik El-Deeb St - Mounira - Sayeda Zeinab",
+        areaAr: "السيدة زينب",
+        areaEn: "Sayeda Zeinab",
+        mapsLink: "https://share.google/XU1ybwuFrLgkjheSX",
+        facebook: "https://www.facebook.com/share/1K4sRr5kJJ/",
+        instagram: "https://www.instagram.com/institutfrancais_egypte",
+        website: "https://www.ifegypte.com/ar/#/",
+        workingDaysAr: "يومياً عدا السبت",
+        workingDaysEn: "Everyday except Saturday",
+        workingHours: "9:00 AM - 7:00 PM",
+        wifi: "available",
+        email: "medcaire@cfcc-eg.org",
+        phone: "02227915800"
+      },
+      {
+        id: 2,
+        nameAr: "معهد جوته (المركز الثقافي الألماني)",
+        nameEn: "Goethe-Institut",
+        addressAr: "17 شارع حسين واصف - ميدان المساحة - الدقي",
+        addressEn: "17 Hussein Wassef St - Mesaha Sq - Dokki",
+        areaAr: "الدقي",
+        areaEn: "Dokki",
+        mapsLink: "https://maps.google.com/?q=Goethe-Institut+Kairo+Dokki",
+        facebook: "https://www.facebook.com/goetheinstitut.cairo",
+        instagram: "https://www.instagram.com/goetheinstitut_kairo/",
+        website: "https://www.goethe.de/ins/eg/ar/index.html",
+        workingDaysAr: "الأحد - الخميس",
+        workingDaysEn: "Sunday - Thursday",
+        workingHours: "11:00 AM - 7:00 PM",
+        wifi: "limited",
+        email: "bibliothek-kairo@goethe.de",
+        phone: "02225759877"
+      },
+      {
+        id: 3,
+        nameAr: "الركن الأمريكي (مكتبة المعادي العامة)",
+        nameEn: "American Corner Maadi",
+        addressAr: "2 شارع النصر بجوار المركز الأوليمبي - المعادي الجديدة",
+        addressEn: "2 Al-Nasr St next to Olympic Center - New Maadi",
+        areaAr: "المعادي",
+        areaEn: "Maadi",
+        mapsLink: "https://maps.google.com/?q=Maadi+Public+Library+Cairo",
+        facebook: "https://www.facebook.com/USEmbassyCairo/",
+        instagram: "https://www.instagram.com/usembassycairo/",
+        website: "https://eg.usembassy.gov/education/american-spaces/",
+        workingDaysAr: "الأحد - الخميس",
+        workingDaysEn: "Sunday - Thursday",
+        workingHours: "10:00 AM - 4:00 PM",
+        wifi: "available",
+        email: "ACCairo@state.gov",
+        phone: "02227548541"
+      },
+      {
+        id: 4,
+        nameAr: "بيت السناري",
+        nameEn: "Bayt Al-Sinnari",
+        addressAr: "حارة منج متفرع من شارع الكومي - السيدة زينب",
+        addressEn: "Monge Alley off Al-Komy St - Sayeda Zeinab",
+        areaAr: "السيدة زينب",
+        areaEn: "Sayeda Zeinab",
+        mapsLink: "https://maps.google.com/?q=Bayt+Al-Sennari+Cairo",
+        facebook: "https://www.facebook.com/Bayt.AlSinnari",
+        instagram: "https://www.instagram.com/bayt_alsinnari/",
+        website: "https://www.bibalex.org/baytalsinnari/",
+        workingDaysAr: "السبت - الخميس",
+        workingDaysEn: "Saturday - Thursday",
+        workingHours: "9:00 AM - 5:00 PM",
+        wifi: "available",
+        email: "bayt.alsinnari@bibalex.org",
+        phone: "02223909471"
+      },
+      {
+        id: 5,
+        nameAr: "بيت يكن",
+        nameEn: "Bayt Yakan",
+        addressAr: "سوق السلاح - الدرب الأحمر",
+        addressEn: "Souq Al-Selah - Darb Al-Ahmar",
+        areaAr: "الدرب الأحمر",
+        areaEn: "Darb Al-Ahmar",
+        mapsLink: "https://maps.app.goo.gl/ZKnjVpsR2wUvJ28d8",
+        facebook: "https://www.facebook.com/baytyakan/",
+        instagram: "https://www.instagram.com/bayt_yakan/",
+        website: "https://linktr.ee/baytyakan",
+        workingDaysAr: "يومياً عدا الجمعة",
+        workingDaysEn: "Everyday except Friday",
+        workingHours: "10:00 AM - 4:00 PM",
+        wifi: "none",
+        email: "baytyakan@gmail.com",
+        phone: "0109555627"
+      },
+      {
+        id: 6,
+        nameAr: "الحديقة الثقافية للأطفال",
+        nameEn: "Children's Cultural Park",
+        addressAr: "شارع قدري - السيدة زينب",
+        addressEn: "Qadry St - Sayeda Zeinab",
+        areaAr: "السيدة زينب",
+        areaEn: "Sayeda Zeinab",
+        mapsLink: "https://maps.app.goo.gl/LDe2HZ1vLy2xdDwa9",
+        facebook: "https://www.facebook.com/CulturalParkForChildren/",
+        instagram: "",
+        website: "https://www.cdcabdelhalim.com/the-childrens-culture-park.html",
+        workingDaysAr: "يومياً عدا الجمعة",
+        workingDaysEn: "Everyday except Friday",
+        workingHours: "8:00 AM - 6:00 PM",
+        wifi: "none",
+        email: "",
+        phone: "02223915220"
+      },
+      {
+        id: 7,
+        nameAr: "مكتبة مصر العامة",
+        nameEn: "Misr Public Library (MPL)",
+        addressAr: "4 شارع جمال حمدان - الدقي",
+        addressEn: "4 Gamal Hamdan St - Dokki",
+        areaAr: "الدقي",
+        areaEn: "Dokki",
+        mapsLink: "https://maps.google.com/?q=Misr+Public+Library+Dokki",
+        facebook: "https://www.facebook.com/mplcairo/",
+        instagram: "https://www.instagram.com/mpl_egypt/",
+        website: "https://mpl.org.eg/en/",
+        workingDaysAr: "يومياً عدا الثلاثاء",
+        workingDaysEn: "Everyday except Tuesday",
+        workingHours: "10:00 AM - 7:00 PM",
+        wifi: "limited",
+        email: "info@mpl.org.eg",
+        phone: "02233360291"
+      },
+      {
+        id: 8,
+        nameAr: "الأثر لنا",
+        nameEn: "Athar Lina",
+        addressAr: "10 شارع السيدة رقية - الخليفة",
+        addressEn: "10 Sayeda Ruqayya St - Al-Khalifa",
+        areaAr: "الخليفة",
+        areaEn: "Al-Khalifa",
+        mapsLink: "https://maps.app.goo.gl/9k1WodZMj6BNJwG17",
+        facebook: "https://www.facebook.com/atharlina/",
+        instagram: "https://www.instagram.com/atharlina/",
+        website: "https://atharlina.com/ar/",
+        workingDaysAr: "الأحد - الخميس",
+        workingDaysEn: "Sunday - Thursday",
+        workingHours: "9:00 AM - 5:00 PM",
+        wifi: "available",
+        email: "info@atharlina.com",
+        phone: "01222409744"
+      },
+      {
+        id: 9,
+        nameAr: "تكية مسافرخانة (تكية مسافر)",
+        nameEn: "Takiyyat Musafir",
+        addressAr: "درب المسمط - الجمالية",
+        addressEn: "Darb Al-Masmat - Gamaleya",
+        areaAr: "الجمالية",
+        areaEn: "Gamaleya",
+        mapsLink: "https://maps.app.goo.gl/du3YmaKTTo6Cvwfs9",
+        facebook: "https://www.facebook.com/TakiyyatMusafir/",
+        instagram: "",
+        website: "",
+        workingDaysAr: "السبت - الخميس",
+        workingDaysEn: "Saturday - Thursday",
+        workingHours: "9:00 AM - 4:00 PM",
+        wifi: "none",
+        email: "",
+        phone: ""
+      },
+      {
+        id: 10,
+        nameAr: "المركز الثقافي المجري",
+        nameEn: "Liszt Institute Cairo",
+        addressAr: "13 شارع جواد حسني - عابدين",
+        addressEn: "13 Gawad Hosny St - Abdeen",
+        areaAr: "عابدين",
+        areaEn: "Abdeen",
+        mapsLink: "https://maps.google.com/?q=Liszt+Institute+Hungarian+Cultural+Center+Cairo",
+        facebook: "https://www.facebook.com/LisztInstituteCairo/",
+        instagram: "https://www.instagram.com/lisztinstitutecairo/",
+        website: "https://culture.hu/en/cairo",
+        workingDaysAr: "الأحد - الخميس",
+        workingDaysEn: "Sunday - Thursday",
+        workingHours: "9:00 AM - 4:00 PM",
+        wifi: "available",
+        email: "cairo@culture.hu",
+        phone: "02223926692"
+      },
+      {
+        id: 11,
+        nameAr: "المركز الثقافي الإسباني (سيرفانتس)",
+        nameEn: "Instituto Cervantes",
+        addressAr: "20 شارع بولس حنا - الدقي",
+        addressEn: "20 Boulos Hanna St - Dokki",
+        areaAr: "الدقي",
+        areaEn: "Dokki",
+        mapsLink: "https://maps.google.com/?q=Instituto+Cervantes+El+Cairo+Dokki",
+        facebook: "https://www.facebook.com/InstitutoCervantesElCairo/",
+        instagram: "https://www.instagram.com/cervanteselcairo/",
+        website: "https://elcairo.cervantes.es/",
+        workingDaysAr: "الأحد - الخميس",
+        workingDaysEn: "Sunday - Thursday",
+        workingHours: "9:00 AM - 8:00 PM",
+        wifi: "available",
+        email: "adcai@cervantes.es",
+        phone: "02237601746"
+      },
+      {
+        id: 12,
+        nameAr: "المركز الثقافي الروسي",
+        nameEn: "Russian Cultural Center",
+        addressAr: "127 شارع التحرير - الدقي",
+        addressEn: "127 Tahrir St - Dokki",
+        areaAr: "الدقي",
+        areaEn: "Dokki",
+        mapsLink: "https://maps.google.com/?q=Russian+Centre+for+Science+and+Culture+Cairo",
+        facebook: "https://www.facebook.com/rcc.cairo/",
+        instagram: "https://www.instagram.com/rcc_cairo/",
+        website: "http://www.rccegypt.org/",
+        workingDaysAr: "السبت - الخميس",
+        workingDaysEn: "Saturday - Thursday",
+        workingHours: "9:00 AM - 8:00 PM",
+        wifi: "available",
+        email: "rcc_cairo@mail.ru",
+        phone: "02237624414"
+      },
+      {
+        id: 13,
+        nameAr: "المركز الأمريكي للأبحاث (ARCE)",
+        nameEn: "American Research Center",
+        addressAr: "2 ميدان سيمون بوليفار - جاردن سيتي",
+        addressEn: "2 Simon Bolivar Sq - Garden City",
+        areaAr: "جاردن سيتي",
+        areaEn: "Garden City",
+        mapsLink: "https://maps.google.com/?q=American+Research+Center+in+Egypt+Cairo",
+        facebook: "https://www.facebook.com/arcecairo/",
+        instagram: "https://www.instagram.com/arce_egypt/",
+        website: "http://www.arce.org/",
+        workingDaysAr: "الأحد - الخميس",
+        workingDaysEn: "Sunday - Thursday",
+        workingHours: "8:30 AM - 4:30 PM",
+        wifi: "available",
+        email: "cairo@arce.org",
+        phone: "02227948239"
+      },
+      {
+        id: 14,
+        nameAr: "المركز الثقافي الياباني (مؤسسة اليابان)",
+        nameEn: "The Japan Foundation",
+        addressAr: "106 شارع القصر العيني - جاردن سيتي",
+        addressEn: "106 Kasr Al Ainy St - Garden City",
+        areaAr: "جاردن سيتي",
+        areaEn: "Garden City",
+        mapsLink: "https://maps.google.com/?q=The+Japan+Foundation+Cairo",
+        facebook: "https://www.facebook.com/jfcairo/",
+        instagram: "https://www.instagram.com/jfcairo/",
+        website: "https://www.eg.emb-japan.go.jp/itprtop_en/index.html",
+        workingDaysAr: "الأحد - الخميس",
+        workingDaysEn: "Sunday - Thursday",
+        workingHours: "9:00 AM - 4:00 PM",
+        wifi: "available",
+        email: "center@embjapan.org.eg",
+        phone: "02227953962"
+      },
+      {
+        id: 15,
+        nameAr: "المركز الثقافي اليوناني",
+        nameEn: "Hellenic Cultural Centre",
+        addressAr: "1 شارع الفسطاط - مصر الجديدة",
+        addressEn: "1 Al-Fustat St - Heliopolis",
+        areaAr: "مصر الجديدة",
+        areaEn: "Heliopolis",
+        mapsLink: "https://maps.google.com/?q=Hellenic+Cultural+Centre+Heliopolis+Cairo",
+        facebook: "https://www.facebook.com/HellenicCulturalCentreCairo/",
+        instagram: "https://www.instagram.com/hellenic_cultural_centre/",
+        website: "http://hcc-cairo.org/",
+        workingDaysAr: "الأحد - الخميس",
+        workingDaysEn: "Sunday - Thursday",
+        workingHours: "10:00 AM - 5:00 PM",
+        wifi: "available",
+        email: "hcc@hcc-cairo.org",
+        phone: "02226441518"
+      },
+      {
+        id: 16,
+        nameAr: "المبادرة الدنماركية المصرية للحوار (DEDI)",
+        nameEn: "Danish Egyptian Dialogue Initiative",
+        addressAr: "19 شارع البستان - وسط البلد",
+        addressEn: "19 Al Bustan St - Downtown",
+        areaAr: "وسط البلد",
+        areaEn: "Downtown",
+        mapsLink: "https://maps.app.goo.gl/ShpbcRRpeXUhARC56",
+        facebook: "https://www.facebook.com/dedinitiatives/",
+        instagram: "https://www.instagram.com/dedinitiatives/",
+        website: "https://dedi.org.eg/",
+        workingDaysAr: "الأحد - الخميس",
+        workingDaysEn: "Sunday - Thursday",
+        workingHours: "9:00 AM - 5:00 PM",
+        wifi: "available",
+        email: "info@dedi.org.eg",
+        phone: "02227928243"
+      },
+      {
+        id: 17,
+        nameAr: "المركز المصري للثقافة والفنون (مكان)",
+        nameEn: "Egyptian Center for Culture & Arts - Makan",
+        addressAr: "1 شارع سعد زغلول - المنيرة - السيدة زينب",
+        addressEn: "1 Saad Zaghloul St - Mounira - Sayeda Zeinab",
+        areaAr: "السيدة زينب",
+        areaEn: "Sayeda Zeinab",
+        mapsLink: "https://maps.google.com/?q=Egyptian+Center+for+Culture+and+Arts+Makan+Cairo",
+        facebook: "https://www.facebook.com/makan.egypt/",
+        instagram: "https://www.instagram.com/makan_culture/",
+        website: "http://www.egyptmusic.org/",
+        workingDaysAr: "الاثنين - الأربعاء (وللأحداث)",
+        workingDaysEn: "Mon - Wed (and event days)",
+        workingHours: "11:00 AM - 9:00 PM",
+        wifi: "available",
+        email: "makan@egyptmusic.org",
+        phone: "02227920878"
+      },
+      {
+        id: 18,
+        nameAr: "مكتبة نون السحار",
+        nameEn: "Noon El-Sahhar Bookstore",
+        addressAr: "14 شارع بطرس غالي - روكسي - مصر الجديدة",
+        addressEn: "14 Boutros Ghali St - Roxy - Heliopolis",
+        areaAr: "مصر الجديدة",
+        areaEn: "Heliopolis",
+        mapsLink: "https://maps.google.com/?q=Noon+El-Sahhar+Bookstore+Roxy",
+        facebook: "https://www.facebook.com/noonsahhar/",
+        instagram: "https://www.instagram.com/noonelsahhar/",
+        website: "",
+        workingDaysAr: "يومياً",
+        workingDaysEn: "Everyday",
+        workingHours: "10:00 AM - 10:00 PM",
+        wifi: "available",
+        email: "noonsahhar@gmail.com",
+        phone: "02222588399"
+      },
+      {
+        id: 19,
+        nameAr: "مركز طلعت حرب الثقافي",
+        nameEn: "Talaat Harb Cultural Center",
+        addressAr: "1 شارع السيدة نفيسة - زينهم - السيدة زينب",
+        addressEn: "1 Sayeda Nafisa St - Zeinhom - Sayeda Zeinab",
+        areaAr: "السيدة زينب",
+        areaEn: "Sayeda Zeinab",
+        mapsLink: "https://maps.google.com/?q=Talaat+Harb+Cultural+Center+Sayeda+Zeinab",
+        facebook: "https://www.facebook.com/talaatharbcenter/",
+        instagram: "",
+        website: "https://www.cdf.gov.eg/",
+        workingDaysAr: "السبت - الخميس",
+        workingDaysEn: "Saturday - Thursday",
+        workingHours: "9:00 AM - 4:00 PM",
+        wifi: "none",
+        email: "talaatharb@cdf.gov.eg",
+        phone: "02223622647"
+      },
+      {
+        id: 20,
+        nameAr: "بيت المعمار المصري (درب اللبانة)",
+        nameEn: "Darbellabbana Center",
+        addressAr: "درب اللبانة - أمام جامع السلطان حسن - القلعة",
+        addressEn: "Darb Al-Labbana - Al-Qalaa",
+        areaAr: "القلعة",
+        areaEn: "Al-Qalaa",
+        mapsLink: "https://maps.google.com/?q=Egyptian+Architecture+House+Beit+Al-Mimar+Cairo",
+        facebook: "https://www.facebook.com/EgyptianArchitectureCenter/",
+        instagram: "https://www.instagram.com/egyptianarchitecturehouse/",
+        website: "https://www.cdf.gov.eg/",
+        workingDaysAr: "الأحد - الخميس",
+        workingDaysEn: "Sunday - Thursday",
+        workingHours: "9:00 AM - 4:00 PM",
+        wifi: "none",
+        email: "architecturehouse@cdf.gov.eg",
+        phone: "02225117043"
+      }
+    ];
+
+    /* =========================================
+       I18N: Translations
+       ========================================= */
+    const translations = {
+      ar: {
+        title: "دليل المراكز الثقافية",
+        subtitle: "القاهرة، مصر",
+        heroTitle: "اكتشف نبض القاهرة الثقافي",
+        heroDesc: "دليلك الشامل للمكتبات، المراكز الفنية، والمعاهد الثقافية في العاصمة.",
+        searchPlaceholder: "ابحث بالاسم، المنطقة، أو الكلمات الدالة...",
+        filterArea: "المنطقة",
+        filterWifi: "خدمة الواي فاي",
+        allAreas: "كل المناطق",
+        allWifi: "الكل",
+        wifiAvailable: "متاح",
+        wifiLimited: "محدود",
+        wifiNone: "غير متوفر",
+        resultsText: "مركز ثقافي",
+        clearFilters: "مسح التصفيات",
+        emptyTitle: "لا توجد نتائج",
+        emptyDesc: "حاول تغيير كلمات البحث أو مسح التصفيات.",
+        mapBtn: "الموقع على الخريطة",
+        websiteBtn: "الموقع الإلكتروني",
+        callBtn: "اتصال",
+        emailBtn: "مراسلة",
+        workingHoursTitle: "مواعيد العمل",
+        addressTitle: "العنوان",
+        notAvailable: "غير متوفر",
+        footerText: "بني باستخدام",
+        detailsLabel: "التفاصيل"
+      },
+      en: {
+        title: "Cultural Centers Guide",
+        subtitle: "Cairo, Egypt",
+        heroTitle: "Discover Cairo's Cultural Heart",
+        heroDesc: "Your comprehensive guide to libraries, art centers, and cultural hubs across the capital.",
+        searchPlaceholder: "Search by name, area, or keyword...",
+        filterArea: "Neighborhood",
+        filterWifi: "Wi-Fi Availability",
+        allAreas: "All Areas",
+        allWifi: "All",
+        wifiAvailable: "Available",
+        wifiLimited: "Limited",
+        wifiNone: "None",
+        resultsText: "Centers Found",
+        clearFilters: "Clear Filters",
+        emptyTitle: "No results found",
+        emptyDesc: "Try adjusting your search terms or clearing filters.",
+        mapBtn: "View on Map",
+        websiteBtn: "Website",
+        callBtn: "Call",
+        emailBtn: "Email",
+        workingHoursTitle: "Working Hours",
+        addressTitle: "Address",
+        notAvailable: "N/A",
+        footerText: "Built with",
+        detailsLabel: "Details"
+      }
+    };
+
+    /* =========================================
+       STATE MANAGEMENT
+       ========================================= */
+    let currentLang = 'ar';
+    let searchQuery = '';
+    let selectedArea = '';
+    let selectedWifi = '';
+    
+    // Derived Areas
+    const areasAr = [...new Set(rawData.map(c => c.areaAr))].sort();
+    const areasEn = [...new Set(rawData.map(c => c.areaEn))].sort();
+    
+    /* =========================================
+       DOM ELEMENTS
+       ========================================= */
+    const searchInput = document.getElementById('search-input');
+    const areaFiltersContainer = document.getElementById('area-filters');
+    const wifiFiltersContainer = document.getElementById('wifi-filters');
+    const cardsGrid = document.getElementById('cards-grid');
+    const resultsCount = document.getElementById('results-count');
+    const emptyState = document.getElementById('empty-state');
+    const clearFiltersBtn = document.getElementById('clear-filters');
+    const langToggleBtn = document.getElementById('lang-toggle');
+    const langText = document.getElementById('lang-text');
+    
+    // Modal
+    const detailsModal = document.getElementById('details-modal');
+    const modalBackdrop = document.getElementById('modal-backdrop');
+    const modalContentPanel = document.getElementById('modal-content-panel');
+    const closeModalBtn = document.getElementById('close-modal');
+    const modalBody = document.getElementById('modal-body');
+
+    /* =========================================
+       FUNCTIONS
+       ========================================= */
+       
+    // Update text elements based on language
+    function applyTranslations() {
+      const t = translations[currentLang];
+      document.title = currentLang === 'ar' ? "دليل المراكز الثقافية في القاهرة | Cairo Cultural Centers" : "Cairo Cultural Centers | دليل المراكز الثقافية";
+      document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+      document.documentElement.lang = currentLang;
+      langText.textContent = currentLang === 'ar' ? 'English' : 'عربي';
+      
+      document.getElementById('t-header-title').textContent = t.title;
+      document.getElementById('t-header-subtitle').textContent = t.subtitle;
+      document.getElementById('t-hero-title').textContent = t.heroTitle;
+      document.getElementById('t-hero-desc').textContent = t.heroDesc;
+      document.getElementById('t-filter-area').textContent = t.filterArea;
+      document.getElementById('t-filter-wifi').textContent = t.filterWifi;
+      document.getElementById('t-results-text').textContent = t.resultsText;
+      document.getElementById('t-clear-filters').textContent = t.clearFilters;
+      document.getElementById('t-empty-title').textContent = t.emptyTitle;
+      document.getElementById('t-empty-desc').textContent = t.emptyDesc;
+      document.getElementById('t-footer').textContent = t.footerText;
+      searchInput.placeholder = t.searchPlaceholder;
+      
+      renderFilters();
+      renderCards();
+    }
+
+    // Render Filter Chips
+    function renderFilters() {
+      const t = translations[currentLang];
+      const areas = currentLang === 'ar' ? areasAr : areasEn;
+      
+      // Area Chips
+      areaFiltersContainer.innerHTML = `
+        <button onclick="setArea('')" class="px-4 py-2 rounded-full border text-xs transition-all ${selectedArea === '' ? 'chip-active' : 'chip-inactive hover:bg-gray-50'}">
+          ${t.allAreas}
+        </button>
+      `;
+      areas.forEach((area, index) => {
+        // Find matching generic ID based on En mapping to sync state across languages
+        const enArea = areasEn[index];
+        const isActive = selectedArea === enArea;
+        
+        areaFiltersContainer.innerHTML += `
+          <button onclick="setArea('${enArea}')" class="px-4 py-2 rounded-full border text-xs transition-all ${isActive ? 'chip-active' : 'chip-inactive hover:bg-gray-50'}">
+            ${area}
+          </button>
+        `;
+      });
+
+      // Wi-Fi Chips
+      const wifiOptions = [
+        { val: '', label: t.allWifi },
+        { val: 'available', label: t.wifiAvailable },
+        { val: 'limited', label: t.wifiLimited },
+        { val: 'none', label: t.wifiNone }
+      ];
+
+      wifiFiltersContainer.innerHTML = '';
+      wifiOptions.forEach(opt => {
+        const isActive = selectedWifi === opt.val;
+        wifiFiltersContainer.innerHTML += `
+          <button onclick="setWifi('${opt.val}')" class="px-4 py-2 rounded-full border text-xs transition-all ${isActive ? 'chip-active' : 'chip-inactive hover:bg-gray-50'}">
+            ${opt.label}
+          </button>
+        `;
+      });
+      
+      toggleClearFiltersBtn();
+    }
+
+    // Handlers for Filters
+    window.setArea = (area) => {
+      selectedArea = area;
+      renderFilters();
+      renderCards();
+    }
+    window.setWifi = (wifi) => {
+      selectedWifi = wifi;
+      renderFilters();
+      renderCards();
+    }
+    
+    function toggleClearFiltersBtn() {
+      if (searchQuery || selectedArea || selectedWifi) {
+        clearFiltersBtn.classList.remove('hidden');
+      } else {
+        clearFiltersBtn.classList.add('hidden');
+      }
+    }
+
+    function clearFilters() {
+      searchQuery = '';
+      searchInput.value = '';
+      selectedArea = '';
+      selectedWifi = '';
+      renderFilters();
+      renderCards();
+    }
+
+    // Helper: Wifi Badge
+    function getWifiBadge(status) {
+      const t = translations[currentLang];
+      if (status === 'available') return `<span class="text-[#10b981] text-[10px] font-bold flex items-center gap-1"><i data-lucide="wifi" class="w-3 h-3"></i> ${t.wifiAvailable}</span>`;
+      if (status === 'limited') return `<span class="text-yellow-600 text-[10px] font-bold flex items-center gap-1"><i data-lucide="signal-low" class="w-3 h-3"></i> ${t.wifiLimited}</span>`;
+      return `<span class="text-gray-400 text-[10px] font-bold flex items-center gap-1"><i data-lucide="wifi-off" class="w-3 h-3"></i> ${t.wifiNone}</span>`;
+    }
+
+    // Render Cards Grid
+    function renderCards() {
+      const t = translations[currentLang];
+      
+      const filtered = rawData.filter(c => {
+        const term = searchQuery.toLowerCase();
+        const searchMatch = c.nameAr.toLowerCase().includes(term) || 
+                            c.nameEn.toLowerCase().includes(term) ||
+                            c.addressAr.toLowerCase().includes(term) ||
+                            c.addressEn.toLowerCase().includes(term);
+        const areaMatch = selectedArea ? c.areaEn === selectedArea : true;
+        const wifiMatch = selectedWifi ? c.wifi === selectedWifi : true;
+        return searchMatch && areaMatch && wifiMatch;
+      });
+
+      resultsCount.textContent = filtered.length;
+      
+      if (filtered.length === 0) {
+        cardsGrid.innerHTML = '';
+        emptyState.classList.remove('hidden');
+      } else {
+        emptyState.classList.add('hidden');
+        cardsGrid.innerHTML = filtered.map((c, index) => {
+          const name = currentLang === 'ar' ? c.nameAr : c.nameEn;
+          const subtitle = currentLang === 'ar' ? c.nameEn : c.nameAr;
+          const address = currentLang === 'ar' ? c.addressAr : c.addressEn;
+          const area = currentLang === 'ar' ? c.areaAr : c.areaEn;
+          const days = currentLang === 'ar' ? c.workingDaysAr : c.workingDaysEn;
+
+          return `
+            <div class="glass-card p-6 flex flex-col justify-between h-full fade-in cursor-pointer relative group" style="animation-delay: ${index * 0.05}s;" onclick="openModal(${c.id})">
+              
+              <div>
+                <div class="flex justify-between items-start mb-4">
+                  <span class="bg-[#fef3c7] text-[#b45309] px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">${area}</span>
+                  ${getWifiBadge(c.wifi)}
+                </div>
+                
+                <h3 class="text-2xl font-bold text-[#1a1a1a] leading-tight mb-1">${name}</h3>
+                <p class="text-sm text-[#b45309] font-serif mb-4">${subtitle}</p>
+                
+                <div class="grid grid-cols-2 gap-4 text-xs mb-4 pt-2 border-t border-[#e5e1da]">
+                  <div>
+                    <p class="text-gray-400 uppercase font-bold tracking-tighter mb-1">${t.addressTitle}</p>
+                    <p class="font-semibold text-gray-700 line-clamp-2">${address}</p>
+                  </div>
+                  <div>
+                    <p class="text-gray-400 uppercase font-bold tracking-tighter mb-1">${t.workingHoursTitle}</p>
+                    <p class="font-semibold text-gray-700">${c.workingHours}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex gap-2">
+                <button class="flex-1 py-3 bg-[#1a1a1a] text-white rounded-xl text-xs font-bold transition-all group-hover:bg-[#b45309]">${t.detailsLabel}</button>
+                <button class="px-4 py-3 border border-[#d1ccc0] rounded-xl text-[#1a1a1a] text-xs font-bold group-hover:border-[#1a1a1a] transition-all"><i data-lucide="arrow-${currentLang === 'ar' ? 'left' : 'right'}" class="w-4 h-4"></i></button>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+      
+      lucide.createIcons();
+      toggleClearFiltersBtn();
+    }
+
+    // Modal Logic
+    window.openModal = (id) => {
+      const c = rawData.find(item => item.id === id);
+      if (!c) return;
+      
+      const t = translations[currentLang];
+      const name = currentLang === 'ar' ? c.nameAr : c.nameEn;
+      const subtitle = currentLang === 'ar' ? c.nameEn : c.nameAr;
+      const address = currentLang === 'ar' ? c.addressAr : c.addressEn;
+      const area = currentLang === 'ar' ? c.areaAr : c.areaEn;
+      const days = currentLang === 'ar' ? c.workingDaysAr : c.workingDaysEn;
+
+      // Action Button Helper
+      const getActionBtn = (url, icon, label, type = 'primary') => {
+        if (!url) {
+          return `
+            <div class="flex-1 py-3 bg-gray-50 text-gray-400 rounded-xl text-xs font-bold border border-[#e5e1da] flex flex-col items-center gap-1 cursor-not-allowed">
+              <i data-lucide="${icon}-off" class="w-4 h-4 opacity-50"></i>
+              <span>${label}</span>
+            </div>
+          `;
+        }
+        
+        const baseClass = "flex-1 py-3 rounded-xl text-xs font-bold flex flex-col items-center gap-1 transition-all active:scale-95";
+        const styleClass = type === 'primary' 
+          ? "bg-[#1a1a1a] text-white hover:bg-[#b45309]" 
+          : "bg-white text-[#1a1a1a] border border-[#d1ccc0] hover:border-[#1a1a1a]";
+
+        return `
+          <a href="${url}" target="_blank" rel="noopener noreferrer" class="${baseClass} ${styleClass}">
+            <i data-lucide="${icon}" class="w-4 h-4"></i>
+            <span>${label}</span>
+          </a>
+        `;
+      };
+      
+      const getSocialBtn = (url, icon) => {
+        if (!url) return '';
+        return `
+          <a href="${url}" target="_blank" rel="noopener noreferrer" class="text-[10px] font-bold text-[#b45309] hover:text-[#92400e] flex items-center gap-1">
+            <i data-lucide="${icon}" class="w-3 h-3"></i>
+            <span class="capitalize">${icon}</span>
+          </a>
+        `;
+      };
+
+      const socialHTML = (c.facebook || c.instagram) 
+        ? `<div class="mt-4 flex gap-4 pt-4 border-t border-[#e5e1da]">
+             ${getSocialBtn(c.facebook, 'facebook')}
+             ${getSocialBtn(c.instagram, 'instagram')}
+           </div>` 
+        : '';
+
+      modalBody.innerHTML = `
+        <div class="mb-6 border-b border-[#e5e1da] pb-6">
+          <div class="flex justify-between items-start mb-4">
+            <span class="bg-[#fef3c7] text-[#b45309] px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">${area}</span>
+            ${getWifiBadge(c.wifi)}
+          </div>
+          <h2 class="text-3xl font-bold text-[#1a1a1a] mb-1">${name}</h2>
+          <p class="text-lg text-[#b45309] font-serif">${subtitle}</p>
+        </div>
+
+        <div class="flex gap-2 mb-6">
+          ${getActionBtn(c.mapsLink, 'map-pin', t.mapBtn, 'primary')}
+          ${getActionBtn(c.website, 'globe', t.websiteBtn, 'secondary')}
+          ${getActionBtn(c.phone ? 'tel:' + c.phone : '', 'phone', t.callBtn, 'secondary')}
+          ${getActionBtn(c.email ? 'mailto:' + c.email : '', 'mail', t.emailBtn, 'secondary')}
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="bg-[#f8f5f2] p-5 rounded-2xl border border-[#e5e1da]">
+            <p class="text-gray-400 uppercase font-bold tracking-tighter mb-1 text-xs">${t.workingHoursTitle}</p>
+            <p class="font-semibold text-gray-700 text-sm mb-1">${days}</p>
+            <p class="font-bold text-[#1a1a1a]">${c.workingHours}</p>
+          </div>
+          
+          <div class="bg-[#f8f5f2] p-5 rounded-2xl border border-[#e5e1da]">
+            <p class="text-gray-400 uppercase font-bold tracking-tighter mb-1 text-xs">${t.addressTitle}</p>
+            <p class="font-semibold text-gray-700 text-sm leading-relaxed">${address}</p>
+          </div>
+        </div>
+
+        ${socialHTML}
+      `;
+
+      lucide.createIcons();
+      
+      // Show Modal
+      document.body.style.overflow = 'hidden';
+      detailsModal.classList.remove('opacity-0', 'pointer-events-none');
+      modalContentPanel.classList.remove('scale-95');
+      modalContentPanel.classList.add('scale-100');
+    }
+
+    function closeModal() {
+      document.body.style.overflow = '';
+      detailsModal.classList.add('opacity-0', 'pointer-events-none');
+      modalContentPanel.classList.add('scale-95');
+      modalContentPanel.classList.remove('scale-100');
+    }
+
+    /* =========================================
+       EVENT LISTENERS & INIT
+       ========================================= */
+    document.addEventListener('DOMContentLoaded', () => {
+      // Init UI
+      applyTranslations();
+      
+      // Search Input
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value;
+        renderCards();
+      });
+
+      // Clear Filters
+      clearFiltersBtn.addEventListener('click', clearFilters);
+
+      // Language Toggle
+      langToggleBtn.addEventListener('click', () => {
+        currentLang = currentLang === 'ar' ? 'en' : 'ar';
+        applyTranslations();
+      });
+
+      // Modal Triggers
+      closeModalBtn.addEventListener('click', closeModal);
+      modalBackdrop.addEventListener('click', closeModal);
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+      });
+    });
+  </script>
+</body>
+</html>

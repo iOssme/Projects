@@ -1,0 +1,6 @@
+{
+  "name": "Cairo Cultural Centers Guide",
+  "description": "A bilingual directory of cultural centers, libraries, and artistic hubs in Cairo.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
